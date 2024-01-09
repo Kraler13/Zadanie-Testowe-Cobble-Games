@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class LvlMenager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<Hero> heroList = new List<Hero>();
+    void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < heroList.Count; i++)
+        {
+            heroList[i].speed = Random.Range(1f, 5f);
+            heroList[i].maneuverability = Random.Range(1f, 3f);
+            heroList[i].endurance = Random.Range(50f, 100f);
+        }
     }
 }
