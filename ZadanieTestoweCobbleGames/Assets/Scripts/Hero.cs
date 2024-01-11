@@ -18,21 +18,19 @@ public class Hero : MonoBehaviour
         navMeshAgent.angularSpeed = maneuverability;
     }
 
-    void Update()
-    {
-        Vector3 lookDirection = navMeshAgent.velocity.normalized;
-        if (lookDirection != Vector3.zero)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * maneuverability);
-        }
-    }
+    //void Update()
+    //{
+    //    Vector3 lookDirection = navMeshAgent.velocity.normalized;
+    //    if (lookDirection != Vector3.zero)
+    //    {
+    //        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+    //        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * maneuverability);
+    //    }
+    //}
 
     public void MoveToDestination(Vector3 destination)
     {
         Debug.Log(destination);
-        navMeshAgent.SetDestination(destination);
-
-       
+        navMeshAgent.SetDestination(destination);     
     }
 }

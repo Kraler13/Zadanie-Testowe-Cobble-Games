@@ -3,50 +3,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class ChooseAHero : MonoBehaviour
+public class ChooseAHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Button heroButton1;
-    [SerializeField] private Button heroButton2;
-    [SerializeField] private Button heroButton3;
-    //[SerializeField] private List<Button> heroButtons;
-    //[SerializeField] private List<Transform> hero;
-    [SerializeField] protected GameObject heroOne;
-    [SerializeField] protected GameObject heroTwo;
-    [SerializeField] protected GameObject heroThr;
+
+    [SerializeField] private List<Button> heroButtons;
+    [SerializeField] private List<GameObject> heroObj;
     [SerializeField] private CameraMenager CameraMenager;
     [SerializeField] private InputMenager InputMenager;
-    // Start is called before the first frame update
+
+    private GameObject hoveredHero;
+    private int k = 0;
     void Start()
     {
-        heroButton1.onClick.AddListener(OnHeroButtonOneClick);
-        heroButton2.onClick.AddListener(OnHeroButtonTwoClick);
-        heroButton3.onClick.AddListener(OnHeroButtonThrClick);
-        //for (int i = 0; i < heroButtons.Count; i++)
-        //{
-        //    int heroIndex = i;
-        //    heroButtons[i].onClick.AddListener(() => CameraMenager.target = hero[heroIndex]);
-        //}
+        for (int i = 0; i < heroButtons.Count; i++)
+        {
+            int heroIndex = i;
+            heroButtons[i].onClick.AddListener(() => SelectHero(heroObj[heroIndex]));
+        }
+    }
+    void Update()
+    {
+        if (hoveredHero != null)
+        {
+            foreach (var hero in heroObj)
+            {
+                InputMenager.enabled = false;
+            }
+            k = 1;
+        }
+        else if (hoveredHero == null && k == 1)
+        {
+            foreach (var hero in heroObj)
+            {
+                InputMenager.enabled = true;
+            }
+            k = 0;
+        }
     }
 
-    void OnHeroButtonOneClick()
+    void SelectHero(GameObject selectedHero)
     {
-        Debug.Log("Button One Clicked");
-        CameraMenager.target = heroOne.transform;
-        InputMenager.hero = heroOne.GetComponent<Hero>();
-    }
-    private void OnHeroButtonTwoClick()
-    {
-        Debug.Log("Button Two Clicked");
-        CameraMenager.target = heroTwo.transform;
-        InputMenager.hero = heroTwo.GetComponent<Hero>();
+        CameraMenager.target = selectedHero.transform;
 
+        Hero heroComponent = selectedHero.GetComponent<Hero>();
+        selectedHero.GetComponent<Hero>().enabled = true;
+        if (heroComponent != null)
+        {
+            InputMenager.hero = heroComponent;
+        }
+        foreach (var hero in heroObj)
+        {
+            if (hero != selectedHero)
+                hero.GetComponent<Hero>().enabled = false;
+        }
     }
-    private void OnHeroButtonThrClick()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Button Thr Clicked");
-        CameraMenager.target = heroThr.transform;
-        InputMenager.hero = heroThr.GetComponent<Hero>();
+        hoveredHero = eventData.pointerEnter;
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        hoveredHero = null;
     }
 }
+
