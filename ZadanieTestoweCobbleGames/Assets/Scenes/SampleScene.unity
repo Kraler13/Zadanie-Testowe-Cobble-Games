@@ -1195,6 +1195,7 @@ GameObject:
   - component: {fileID: 832822439}
   - component: {fileID: 832822440}
   - component: {fileID: 832822441}
+  - component: {fileID: 832822442}
   m_Layer: 0
   m_Name: Hero1
   m_TagString: Untagged
@@ -1344,11 +1345,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832822433}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b587e320392fc3949812cc46b1bec812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &832822442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832822433}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55af62afc455afe4692f9dca83eb7d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowPoints:
+  - {fileID: 85609033}
+  - {fileID: 414572545}
+  Followers:
+  - {fileID: 1272515302}
+  - {fileID: 1613531007}
+  PointToFollowNow: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1723,7 @@ GameObject:
   - component: {fileID: 1272515307}
   - component: {fileID: 1272515306}
   - component: {fileID: 1272515305}
+  - component: {fileID: 1272515311}
   - component: {fileID: 1272515304}
   - component: {fileID: 1272515303}
   - component: {fileID: 1272515310}
@@ -1855,11 +1876,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272515302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b587e320392fc3949812cc46b1bec812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1272515311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272515302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55af62afc455afe4692f9dca83eb7d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowPoints:
+  - {fileID: 40732657}
+  - {fileID: 1688548854}
+  Followers:
+  - {fileID: 832822433}
+  - {fileID: 1613531007}
+  PointToFollowNow: {fileID: 85609033}
 --- !u!1 &1288472508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,6 +2445,7 @@ GameObject:
   - component: {fileID: 1613531012}
   - component: {fileID: 1613531011}
   - component: {fileID: 1613531010}
+  - component: {fileID: 1613531016}
   - component: {fileID: 1613531009}
   - component: {fileID: 1613531008}
   - component: {fileID: 1613531015}
@@ -2557,11 +2598,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613531007}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b587e320392fc3949812cc46b1bec812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1613531016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613531007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55af62afc455afe4692f9dca83eb7d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowPoints:
+  - {fileID: 352300005}
+  - {fileID: 701322830}
+  Followers:
+  - {fileID: 832822433}
+  - {fileID: 1272515302}
+  PointToFollowNow: {fileID: 414572545}
 --- !u!1 &1688548854
 GameObject:
   m_ObjectHideFlags: 0

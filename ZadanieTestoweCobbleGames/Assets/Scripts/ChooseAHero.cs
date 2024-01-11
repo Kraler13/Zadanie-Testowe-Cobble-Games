@@ -49,15 +49,23 @@ public class ChooseAHero : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         CameraMenager.target = selectedHero.transform;
 
         Hero heroComponent = selectedHero.GetComponent<Hero>();
-        selectedHero.GetComponent<Hero>().enabled = true;
+        FollowerScript followerComponent = selectedHero.GetComponent<FollowerScript>();
+        heroComponent.enabled = true;
+        followerComponent.enabled = false;
         if (heroComponent != null)
         {
             InputMenager.hero = heroComponent;
         }
+        int i = 0;
         foreach (var hero in heroObj)
         {
             if (hero != selectedHero)
+            {
                 hero.GetComponent<Hero>().enabled = false;
+                hero.GetComponent<FollowerScript>().enabled = true;
+                hero.GetComponent<FollowerScript>().PointToFollowNow = followerComponent.FollowPoints[i];
+                i++;
+            }
         }
     }
     public void OnPointerEnter(PointerEventData eventData)

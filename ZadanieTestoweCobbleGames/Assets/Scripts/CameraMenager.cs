@@ -14,10 +14,7 @@ public class CameraMenager : MonoBehaviour
             Vector3 desiredPosition = target.position + new Vector3(-74.4f, 66.8f, -88.7f); 
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothedPosition;
-
             transform.rotation = Quaternion.Euler(30f, 40f, 0f);
-
-
         }
     }
 }

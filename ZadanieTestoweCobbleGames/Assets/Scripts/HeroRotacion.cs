@@ -6,12 +6,10 @@ using UnityEngine.AI;
 public class HeroRotacion : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
-    private Hero hero;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        hero = GetComponent<Hero>();
     }
     void Update()
     {
@@ -19,7 +17,7 @@ public class HeroRotacion : MonoBehaviour
         if (lookDirection != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * hero.maneuverability);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * navMeshAgent.angularSpeed);
         }
     }
 }
